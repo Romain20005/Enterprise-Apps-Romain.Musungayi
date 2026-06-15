@@ -30,6 +30,7 @@
         <tr class="bg-gray-200">
             <th class="border p-2">Titel</th>
             <th class="border p-2">Organisatie</th>
+            <th class="border p-2">Details</th>
         </tr>
 
         <tr th:each="event : ${events}">
@@ -39,6 +40,16 @@
 
             <td class="border p-2"
                 th:text="${event.organisation}">
+            </td>
+            <td class="border p-2">
+
+                <a th:href="@{/details/{id}(id=${event.id})}"
+                   class="bg-blue-600 text-white px-3 py-1 rounded">
+
+                    Bekijk
+
+                </a>
+
             </td>
         </tr>
 

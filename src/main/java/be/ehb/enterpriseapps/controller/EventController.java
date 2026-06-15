@@ -5,6 +5,7 @@ import be.ehb.enterpriseapps.repository.EventRepository;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller
 public class EventController {
@@ -40,5 +41,17 @@ public class EventController {
         eventRepository.save(event);
 
         return "redirect:/";
+    }
+    @GetMapping("/details/{id}")
+    public String details(@PathVariable Long id,
+                          Model model) {
+
+        Event event =
+                eventRepository.findById(id)
+                        .orElseThrow();
+
+        model.addAttribute("event", event);
+
+        return "details";
     }
 }
