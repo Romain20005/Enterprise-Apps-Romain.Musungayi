@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Nieuw Event</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="bg-gray-100">
+
+<nav class="bg-blue-700 text-white p-4 flex gap-6">
+    <a href="/">NGO Anderlecht</a>
+    <a href="/new">New Event</a>
+    <a href="/about">About</a>
+    <a href="/contact">Contact</a>
+</nav>
+
+<div class="max-w-3xl mx-auto p-8">
+
+    <h1 class="text-4xl font-bold mb-6">
+        Nieuw Evenement
+    </h1>
+
+    <form th:action="@{/new}"
+          th:object="${event}"
+          method="post">
+
+        <div class="mb-4">
+            <label>Titel</label>
+            <input type="text"
+                   th:field="*{title}"
+                   class="border p-2 w-full">
+        </div>
+
+        <div class="mb-4">
+            <label>Omschrijving</label>
+            <input type="text"
+                   th:field="*{description}"
+                   class="border p-2 w-full">
+        </div>
+
+        <div class="mb-4">
+            <label>Organisatie</label>
+            <input type="text"
+                   th:field="*{organisation}"
+                   class="border p-2 w-full">
+        </div>
+
+        <div class="mb-4">
+            <label>Email Contactpersoon</label>
+            <input type="email"
+                   th:field="*{contactEmail}"
+                   class="border p-2 w-full">
+        </div>
+
+        <button class="bg-green-600 text-white px-4 py-2 rounded">
+            Opslaan
+        </button>
+
+    </form>
+
+</div>
+
+<footer class="bg-gray-800 text-white p-4 text-center fixed bottom-0 w-full">
+    © 2026 NGO Anderlecht
+</footer>
+
+</body>
+</html>

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <title>Anderlecht Community NGO</title>
 
@@ -25,10 +25,35 @@
     <h1 class="text-4xl font-bold mb-4">
         Welkom bij onze NGO
     </h1>
+    <table class="table-auto border w-full bg-white">
 
-    <p>
-        Overzicht van evenementen komt hier.
-    </p>
+        <tr class="bg-gray-200">
+            <th class="border p-2">Titel</th>
+            <th class="border p-2">Organisatie</th>
+        </tr>
+
+        <tr th:each="event : ${events}">
+            <td class="border p-2"
+                th:text="${event.title}">
+            </td>
+
+            <td class="border p-2"
+                th:text="${event.organisation}">
+            </td>
+        </tr>
+
+    </table>
+
+    <div class="mt-4">
+
+        <a href="/new"
+           class="bg-green-600 text-white px-4 py-2 rounded">
+
+            Nieuw evenement
+
+        </a>
+
+    </div>
 
 </div>
 
