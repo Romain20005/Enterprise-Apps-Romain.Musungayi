@@ -2,6 +2,8 @@ package be.ehb.enterpriseapps.controller;
 
 import be.ehb.enterpriseapps.model.Event;
 import be.ehb.enterpriseapps.repository.EventRepository;
+import jakarta.validation.Valid;
+import org.springframework.validation.BindingResult;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
@@ -36,7 +38,13 @@ public class EventController {
     }
 
     @PostMapping("/new")
-    public String saveEvent(@ModelAttribute Event event) {
+    public String saveEvent(
+            @Valid @ModelAttribute Event event,
+            BindingResult result) {
+
+        if (result.hasErrors()) {
+            return "new";
+        }
 
         eventRepository.save(event);
 

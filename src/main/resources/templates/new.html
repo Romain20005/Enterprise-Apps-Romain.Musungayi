@@ -37,25 +37,40 @@
                 th:field="*{title}"
                 placeholder="Titel"
                 class="w-full p-2 border rounded">
+        <p class="text-red-500"
+           th:if="${#fields.hasErrors('title')}"
+           th:errors="*{title}">
+        </p>
 
         <textarea
                 th:field="*{description}"
                 placeholder="Omschrijving"
                 class="w-full p-2 border rounded">
         </textarea>
+        <p class="text-red-500"
+           th:if="${#fields.hasErrors('description')}"
+           th:errors="*{description}">
+        </p>
 
         <input
                 type="text"
                 th:field="*{organisation}"
                 placeholder="Organisatie"
                 class="w-full p-2 border rounded">
+        <p class="text-red-500"
+           th:if="${#fields.hasErrors('organisation')}"
+           th:errors="*{organisation}">
+        </p>
 
         <input
                 type="email"
                 th:field="*{contactEmail}"
                 placeholder="Email"
                 class="w-full p-2 border rounded">
-
+        <p class="text-red-500"
+           th:if="${#fields.hasErrors('contactEmail')}"
+           th:errors="*{contactEmail}">
+        </p>
         <input
                 type="datetime-local"
                 th:field="*{dateTime}"
